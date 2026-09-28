@@ -109,7 +109,7 @@ button {
 }
 
 .tab-active {
-  background: var(--plum);
+  background: var(--grape);
   color: #fff;
 }
 
@@ -277,8 +277,8 @@ button {
 }
 
 .btn-primary {
-  background: var(--mint);
-  color: #06382a;
+  background: var(--blue);
+  color: #fff;
 }
 
 .btn-secondary {
