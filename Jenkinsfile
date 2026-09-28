@@ -13,6 +13,14 @@ pipeline {
         disableConcurrentBuilds()
     }
 
+    // Auto-build on `git push` to GitHub.
+    // - githubPush() = instant trigger via GitHub webhook to /github-webhook/
+    // - pollSCM fallback every 2 min for local Jenkins that GitHub can't reach.
+    triggers {
+        githubPush()
+        pollSCM('H/2 * * * *')
+    }
+
     environment {
         // NOTE: do NOT set NODE_ENV=production globally — npm ci skips
         // devDependencies (including vite) when it is set, which breaks
