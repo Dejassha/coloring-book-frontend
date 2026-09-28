@@ -13,9 +13,15 @@ export default function ColoringCanvas({ picture, selectedColor, onSaved }) {
     colorRef.current = selectedColor;
   }, [selectedColor]);
 
+  // Raster picture-book images (jpg/png) can't be tap-to-fill like SVGs
+  const isRaster =
+    picture != null &&
+    (picture.type === 'image' || !picture.url.toLowerCase().endsWith('.svg'));
+
   // Load a fresh copy of the picture's SVG whenever the picture changes
+  // (SVG line-art only — raster images render directly as <img>)
   useEffect(() => {
-    if (!picture) return;
+    if (!picture || isRaster) return;
     let cancelled = false;
 
     async function loadSvg() {
@@ -39,7 +45,7 @@ export default function ColoringCanvas({ picture, selectedColor, onSaved }) {
     return () => {
       cancelled = true;
     };
-  }, [picture]);
+  }, [picture, isRaster]);
 
   // Click-to-fill using event delegation, so we don't need per-shape React state
   function handleCanvasClick(e) {
@@ -82,6 +88,15 @@ export default function ColoringCanvas({ picture, selectedColor, onSaved }) {
 
   function handleDownload() {
     if (!containerRef.current) return;
+    // Raster picture-book image: download the original file
+    if (isRaster) {
+      const a = document.createElement('a');
+      a.href = `${IMAGES_BASE_URL}${picture.url}`;
+      const ext = picture.url.split('.').pop() || 'jpg';
+      a.download = `${picture?.id || 'picture'}.${ext}`;
+      a.click();
+      return;
+    }
     const svgEl = containerRef.current.querySelector('svg');
     if (!svgEl) return;
 
@@ -98,6 +113,32 @@ export default function ColoringCanvas({ picture, selectedColor, onSaved }) {
     return (
       <div className="canvas-empty">
         <p>Pick a picture from the left to start coloring! 🖍️</p>
+      </div>
+    );
+  }
+
+  // Raster picture-book page: show image only (tap-to-fill works on SVG line-art)
+  if (isRaster) {
+    return (
+      <div className="canvas-wrap">
+        <div className="canvas-toolbar">
+          <h2>{picture.name}</h2>
+          <div className="canvas-actions">
+            <button className="btn btn-secondary" onClick={handleDownload} type="button">
+              Download
+            </button>
+          </div>
+        </div>
+
+        <p className="canvas-message">Picture-book page — coloring works on SVG line-art. 🎨</p>
+
+        <div className="canvas-frame">
+          <img
+            src={`${IMAGES_BASE_URL}${picture.url}`}
+            alt={picture.name}
+            className="canvas-photo"
+          />
+        </div>
       </div>
     );
   }

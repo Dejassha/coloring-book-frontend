@@ -304,6 +304,14 @@ button {
   height: auto;
 }
 
+.canvas-frame .canvas-photo {
+  width: 100%;
+  max-width: 420px;
+  height: auto;
+  border-radius: 12px;
+  object-fit: contain;
+}
+
 .canvas-frame .colorable {
   cursor: pointer;
   transition: opacity 0.1s ease;
