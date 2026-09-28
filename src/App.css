@@ -1,0 +1,373 @@
+:root {
+  --sky: #eaf7ff;
+  --coral: #ff6b6b;
+  --sunshine: #ffd166;
+  --mint: #06d6a0;
+  --blue: #118ab2;
+  --grape: #8338ec;
+  --plum: #2b2140;
+  --paper: #ffffff;
+  --shadow: rgba(43, 33, 64, 0.15);
+  --radius-lg: 28px;
+  --radius-md: 18px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--sky);
+  color: var(--plum);
+  font-family: 'Nunito', sans-serif;
+}
+
+h1,
+h2,
+.hero-badge,
+.tab {
+  font-family: 'Baloo 2', 'Nunito', sans-serif;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+}
+
+/* ---------- Hero ---------- */
+
+.hero {
+  position: relative;
+  background: linear-gradient(135deg, var(--coral), var(--grape));
+  padding: 40px 24px 56px;
+  color: #fff;
+  overflow: hidden;
+}
+
+.hero-inner {
+  max-width: 720px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.hero-badge {
+  display: inline-block;
+  background: rgba(255, 255, 255, 0.22);
+  padding: 6px 16px;
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: 0.95rem;
+  margin-bottom: 14px;
+}
+
+.hero h1 {
+  font-size: clamp(1.7rem, 4vw, 2.6rem);
+  margin: 0 0 8px;
+  font-weight: 800;
+  line-height: 1.2;
+}
+
+.hero p {
+  margin: 0;
+  font-size: 1.05rem;
+  opacity: 0.92;
+}
+
+.hero-wave {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -1px;
+  width: 100%;
+  height: 40px;
+}
+
+.hero-wave path {
+  fill: var(--sky);
+}
+
+/* ---------- Tabs ---------- */
+
+.tabs {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin: 20px auto 0;
+}
+
+.tab {
+  border: none;
+  background: var(--paper);
+  padding: 10px 22px;
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: 1rem;
+  color: var(--plum);
+  box-shadow: 0 3px 0 var(--shadow);
+}
+
+.tab-active {
+  background: var(--plum);
+  color: #fff;
+}
+
+.app-error {
+  text-align: center;
+  color: var(--coral);
+  font-weight: 700;
+  margin-top: 12px;
+}
+
+/* ---------- Workspace layout ---------- */
+
+.workspace {
+  max-width: 1180px;
+  margin: 24px auto 60px;
+  padding: 0 20px;
+  display: grid;
+  grid-template-columns: 220px 1fr 200px;
+  gap: 20px;
+  align-items: start;
+}
+
+.my-art {
+  max-width: 1000px;
+  margin: 24px auto 60px;
+  padding: 0 20px;
+}
+
+.sidebar {
+  background: var(--paper);
+  border-radius: var(--radius-lg);
+  padding: 18px;
+  box-shadow: 0 6px 0 var(--shadow);
+}
+
+/* ---------- Picture gallery ---------- */
+
+.gallery-label,
+.palette-label {
+  margin: 0 0 12px;
+  font-weight: 800;
+  font-size: 0.95rem;
+  color: var(--plum);
+}
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+
+.gallery-item {
+  border: 3px solid transparent;
+  background: var(--sky);
+  border-radius: var(--radius-md);
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+
+.gallery-item img {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: contain;
+}
+
+.gallery-item span {
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+.gallery-item-active {
+  border-color: var(--sunshine);
+  background: #fff9ec;
+}
+
+/* ---------- Color palette ---------- */
+
+.palette-swatches {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+
+.swatch {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  border-radius: 50%;
+  border: 3px solid #fff;
+  box-shadow: 0 0 0 2px rgba(43, 33, 64, 0.15);
+}
+
+.swatch-active {
+  box-shadow: 0 0 0 3px var(--plum);
+}
+
+.swatch-eraser {
+  box-shadow: 0 0 0 2px #cbd5e1, inset 0 0 0 1px #cbd5e1;
+}
+
+/* ---------- Canvas / stage ---------- */
+
+.stage {
+  background: var(--paper);
+  border-radius: var(--radius-lg);
+  padding: 18px 20px 24px;
+  box-shadow: 0 6px 0 var(--shadow);
+  min-height: 480px;
+  display: flex;
+  flex-direction: column;
+}
+
+.canvas-empty {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #9a8fb0;
+  font-weight: 700;
+  font-size: 1.05rem;
+  text-align: center;
+}
+
+.canvas-toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.canvas-toolbar h2 {
+  margin: 0;
+  font-size: 1.3rem;
+}
+
+.canvas-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.btn {
+  border: none;
+  border-radius: 999px;
+  padding: 9px 16px;
+  font-weight: 700;
+  font-size: 0.85rem;
+}
+
+.btn-primary {
+  background: var(--mint);
+  color: #06382a;
+}
+
+.btn-secondary {
+  background: var(--sunshine);
+  color: #5c4200;
+}
+
+.btn-ghost {
+  background: #f1eefc;
+  color: var(--plum);
+}
+
+.btn-small {
+  padding: 5px 12px;
+  font-size: 0.75rem;
+}
+
+.canvas-message {
+  margin: 0 0 12px;
+  font-weight: 700;
+  color: var(--blue);
+}
+
+.canvas-frame {
+  flex: 1;
+  border: 3px dashed #d9d2ee;
+  border-radius: var(--radius-md);
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 380px;
+}
+
+.canvas-frame svg {
+  width: 100%;
+  max-width: 420px;
+  height: auto;
+}
+
+.canvas-frame .colorable {
+  cursor: pointer;
+  transition: opacity 0.1s ease;
+}
+
+.canvas-frame .colorable:hover {
+  opacity: 0.85;
+}
+
+.canvas-loading {
+  opacity: 0.5;
+}
+
+/* ---------- My Art gallery ---------- */
+
+.saved-empty {
+  text-align: center;
+  color: #9a8fb0;
+  font-weight: 700;
+  padding: 40px 0;
+}
+
+.saved-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+  gap: 16px;
+}
+
+.saved-card {
+  background: var(--paper);
+  border-radius: var(--radius-md);
+  padding: 12px;
+  box-shadow: 0 4px 0 var(--shadow);
+}
+
+.saved-thumb {
+  aspect-ratio: 1 / 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.saved-thumb svg {
+  width: 100%;
+  height: 100%;
+}
+
+.saved-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 8px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  gap: 8px;
+}
+
+/* ---------- Responsive ---------- */
+
+@media (max-width: 860px) {
+  .workspace {
+    grid-template-columns: 1fr;
+  }
+  .sidebar-right {
+    order: 3;
+  }
+}
