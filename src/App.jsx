@@ -34,8 +34,8 @@ export default function App() {
     <div className="app-shell">
       <header className="hero">
         <div className="hero-inner">
-          <span className="hero-badge">🖍️ Doodle Patch</span>
-          <h1>Pick a picture, splash some color!</h1>
+          <span className="hero-badge">🎨 Doodle Patch Studio</span>
+          <h1>Pick a picture, splash some color! ✨</h1>
           <p>Tap any shape to fill it in, then save your masterpiece.</p>
         </div>
         <svg className="hero-wave" viewBox="0 0 1440 80" preserveAspectRatio="none">
