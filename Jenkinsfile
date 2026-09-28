@@ -1,3 +1,8 @@
+// IMPORTANT: Jenkins job "Branches to build" MUST be */main (not */master).
+// This repo's default branch is `main` — `origin` has no `refs/heads/master`,
+// so `git fetch ... +refs/heads/master:...` fails with status 128 before
+// this Jenkinsfile is even loaded. This pipeline itself is branch-agnostic
+// via `checkout scm` and works on any branch.
 pipeline {
     agent any
 
