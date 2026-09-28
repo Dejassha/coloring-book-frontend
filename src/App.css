@@ -282,8 +282,8 @@ button {
 }
 
 .btn-secondary {
-  background: var(--sunshine);
-  color: #5c4200;
+  background: var(--coral);
+  color: #fff;
 }
 
 .btn-ghost {
