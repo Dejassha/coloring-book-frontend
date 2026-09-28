@@ -39,7 +39,8 @@ button {
 
 .hero {
   position: relative;
-  background: linear-gradient(135deg, var(--coral), var(--grape));
+  /* TRIGGER-TEST: changed hero gradient to verify Jenkins webhook auto-build */
+  background: linear-gradient(135deg, var(--blue), var(--mint));
   padding: 40px 24px 56px;
   color: #fff;
   overflow: hidden;
